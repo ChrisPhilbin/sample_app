@@ -48,6 +48,10 @@ before_action :admin_user, only: :destroy
     redirect_to users_url
   end
   
+  def password_reset_expired?
+    reset_sent_at < 2.hours.ago
+  end
+  
   private
   
     def correct_user
